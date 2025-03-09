@@ -1,0 +1,1 @@
+python gen_pattern.py -o .\charuco_board.svg --rows 10 --columns 7 -T charuco_board --square_size 30 --marker_size 15 -f DICT_7X7_50.json.gz --units mm -a A4

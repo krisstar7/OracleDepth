@@ -1,0 +1,5 @@
+svgfig.py savenuva slikite na desktop save() _default_destination
+
+create a ChAruco board pattern in charuco_board.svg with 7 rows, 5 columns, square size 30 mm, aruco marker size 15 mm and using DICT_5X5_1000 as dictionary for aruco markers (it contains in DICT_ARUCO.json file): 
+
+https://docs.opencv.org/4.x/da/d0d/tutorial_camera_calibration_pattern.html
