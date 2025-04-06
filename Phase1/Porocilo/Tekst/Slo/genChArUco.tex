@@ -1,0 +1,20 @@
+Lahko generiramo ploščo, tako da zaženemo \texttt{genFig.bat}. Če to datoteko odpremo z urejevalnikom besedil, lahko spremenimo parametre generirane plošče. \cite{patterntut}
+\begin{itemize}
+    \sloppy
+    \item -o podaja izhodno ime plošče (datoteke se privzeto shranijo na desktop, to lahko spremenite v \texttt{svgfig.py})
+
+    \item \verb|--|rows in \verb|--|columns podaja število vrstic in stolpcev na šahovnici
+
+    \item -T določa vrsto plošče, ki bo generiran\{circles, acircles, checkerboard, radon\_checkerboard, charuco\_board\}
+
+    \item \verb|--|square\_size določa velikost kvadratov
+
+    \item \verb|--|marker\_size določa velikost markerjev
+
+    \item -f določa slovarsko datoteko za ChArUco vzorec(npr. \texttt{DICT\_7X7\_50.json.gz})
+
+    \item \verb|--|units določa uporabljene enote\{mm, inches, px, m\}
+
+    \item -a določa velikost strani \{A3, A4 itd.\}. Uporabimo lahko tudi -h -w za višino in širino v podanih enotah za določanje velikosti strani
+    
+\end{itemize}

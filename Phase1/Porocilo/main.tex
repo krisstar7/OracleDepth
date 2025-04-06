@@ -1,0 +1,164 @@
+% \documentclass{article}
+\documentclass[12pt,a4paper,oneside,fleqn]{book}
+\usepackage[slovene]{babel}
+% \usepackage[english]{babel}
+
+% \usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+\usepackage[left=30mm,
+right=25mm,
+top=30mm,
+bottom=25mm]{geometry}
+
+% \usepackage[backend=biber, style=ieee]{biblatex}
+\usepackage{cite}
+\usepackage[numbib]{tocbibind}
+% \addbibresource{refs.bib}
+
+\usepackage{lipsum}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[nodisplayskipstretch]{setspace}
+\usepackage{fancyhdr}
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    % numbers=left,   
+    numbers=none,
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+\renewcommand{\lstlistingname}{Kod}
+\lstset{style=codestyle}
+
+
+%paragraph settings
+\setlength\parindent{0pt}
+\setlength{\parskip}{1.5ex plus 0.5ex minus 0.5ex}
+
+% set equation environment indentation
+\setlength{\mathindent}{0.5cm}%
+
+% set itemize environment whitespacing and left margin
+% \setlist[itemize]{noitemsep,nolistsep, leftmargin=*}
+
+% set table and figure captions
+\captionsetup[table]{skip=10pt,singlelinecheck=false}
+\captionsetup[figure]{justification=centering}
+
+% set tablename to Preglednica
+\AtBeginDocument{%
+	\renewcommand\tablename{Preglednica}
+}
+
+% set section and tableofcontents depth
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\def\labelitemi{--}
+
+%  accordingly format a chapter definition
+% \titleformat{\chapter}[display]
+% {\bfseries}{}{0pt}{\Huge\thechapter\quad}
+
+% set fancy_nohead fancy header
+\fancypagestyle{fancy_nohead}{
+	\fancyfoot[RO]{\thepage}
+	\fancyhead{}
+	\renewcommand{\headrulewidth}{0pt}
+	\chead{}
+	\cfoot{}
+}
+
+% assign no_header
+% \assignpagestyle{\chapter}{fancy_nohead}
+
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\theequation}{\arabic{chapter}.\arabic{equation}}
+
+% \renewcommand\cftchapdotsep{\cftdotsep}  % adds leader dots from chapter titles to page numbers
+
+\usepackage[T1]{fontenc} % Ensures proper font rendering
+\usepackage{lmodern}  
+
+% \title{OracleDepth Phase1}
+\title{Interdisciplinarni projekt: Kamera kalibracija in 3D rekonstrukcija z Meshroom}
+\author{Kristijan Danov 23221364}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\pagenumbering{arabic}
+\chapter{Uvod}
+    \input{Tekst/Slo/intro}
+
+\chapter{Teorija}
+    \input{Tekst/Slo/theory}
+
+\section{Pinhole kamera}
+    \input{Tekst/Slo/pinhole}
+
+    \subsection{Zunanji parametri}
+        \input{Tekst/Slo/extrinsics}
+    
+    \subsection{Notranji parametri}
+        \input{Tekst/Slo/intrinsics}
+
+\section{Projektivna transformacija}
+    \input{Tekst/Slo/projtrans}
+
+\section{Popačenje}
+    \input{Tekst/Slo/distortion}
+
+\section{Kalibracija kamere}
+    \input{Tekst/Slo/calibTeo}
+
+
+\chapter{Kod}
+    \input{Tekst/Slo/kod}
+    
+    \section{Generiranje ChArUco plošče}
+        \input{Tekst/Slo/genChArUco}
+
+    \section{Kalibracija kamere}
+        \input{Tekst/Slo/camcalib}
+
+    \section{Nepopačenje}
+        \input{Tekst/Slo/undistortion}
+
+\chapter{Meshroom}
+    \input{Tekst/Slo/meshroom}
+
+% \printbibliography
+\bibliographystyle{IEEEtran_slo}
+\renewcommand{\thechapter}{}
+\bibliography{refs}
+
+\end{document}

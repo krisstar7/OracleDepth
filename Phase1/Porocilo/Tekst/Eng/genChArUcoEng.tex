@@ -1,0 +1,19 @@
+We can generate our marker board by running \texttt{genFig.bat}. If we open that file with a text editor we can modify the parameters of the generated board.
+\begin{itemize}
+    \item -o specifies the output name of board(files by default save to the Desktop, this can be changed in \texttt{svgfig.py})
+
+    \item --rows and --columns specifies the number of rows and columns in the chessboard
+
+    \item -T specifies the type of board that will be generated \{circles, acircles, checkerboard, \\radon\_checkerboard, charuco\_board\}
+
+    \item --square\_size specifies the size of the squares
+
+    \item --marker\_size specifies the size of the markers
+
+    \item -f specifies the dictionary file for the ChArUco pattern (eg. \texttt{DICT\_7X7\_50.json.gz}) 
+
+    \item --units specifies the units used \{mm, inches, px, m\}
+
+    \item -a specifies the page size \{A3, A4 etc.\}. We can also use -h -w for height and width in the specified units for specifying page size. 
+    
+\end{itemize}

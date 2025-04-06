@@ -1,0 +1,10 @@
+Intrinsic parameters are the focal length $f$ and parameters that map the camera coordinate system onto the image plane(also distortion parameters are here, but for now we will disregard them). \\
+We can write these intrinsic parameters as matrix $\pmb{M_i}$
+\[
+    \pmb{M_i} = 
+    \begin{bmatrix}
+        \frac{f}{h_x} & 0 & o_x \\
+        0 & \frac{f}{h_y} & o_y \\
+        0 & 0 & 1
+    \end{bmatrix}_{3\times3}
+\]

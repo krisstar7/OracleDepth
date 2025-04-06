@@ -1,0 +1,34 @@
+Extrinsic parameters are all the geometric parameters that are needed for the change from the camera coordinate system to the external coordinate system. This change is described by translation $\pmb{T}$ and rotation $\pmb{R}$. We can write the change of point $\pmb{P}$ related by world coordinates as $\pmb{P_W}$ to camera coordinates $\pmb{P_C}$ as:
+\[
+    \pmb{P_C} = \pmb{R}(\pmb{P_W}-\pmb{T})
+\]
+The extrinsic parameters $\pmb{T}$ and $\pmb{R}$ are written as:
+\[
+    \pmb{T} = \pmb{O_W} - \pmb{O_C} = \begin{bmatrix}
+                                        T_1 \\
+                                        T_2 \\
+                                        T_3
+                                        \end{bmatrix}_{3\times3}
+                                        \qquad
+    \pmb{R} =
+    \begin{bmatrix}
+        \pmb{R_{1}} \\
+        \pmb{R_{2}} \\
+        \pmb{R_{3}} \\
+    \end{bmatrix}_{3\times3}
+    = \begin{bmatrix}
+        R_{11} & R_{12} & R_{13} \\
+        R_{21} & R_{22} & R_{23} \\
+        R_{31} & R_{32} & R_{33} \\
+    \end{bmatrix}_{3\times3}
+\]
+We can write these extrinsic parameters as matrix $\pmb{M_e}$
+
+\[
+    \pmb{M_e} = 
+    \begin{bmatrix}
+        \pmb{R_1} & -\pmb{R_1 T} \\
+        \pmb{R_2} & -\pmb{R_2 T} \\
+        \pmb{R_3} & -\pmb{R_3 T} \\        
+    \end{bmatrix}_{3\times4}
+\]

@@ -1,0 +1,106 @@
+\documentclass{article}
+% \documentclass[12pt,a4paper,oneside,fleqn]{book}
+% \usepackage[slovene]{babel}
+\usepackage[english]{babel}
+
+\usepackage[a4paper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+% \usepackage[left=30mm,
+% right=25mm,
+% top=30mm,
+% bottom=25mm]{geometry}
+
+\usepackage{biblatex}
+\addbibresource{reffrenc.bib}
+
+\usepackage{lipsum}
+\usepackage{array}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\usepackage[nodisplayskipstretch]{setspace}
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{codestyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    % numbers=left,   
+    numbers=none,
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2
+}
+
+\lstset{style=codestyle}
+
+
+\title{OracleDepth Phase1}
+\author{Kristijan Danov 23221364}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+\newpage
+
+\section{Introduction}
+    \input{Tekst/Eng/introEng}
+
+\section{Theory}
+    \input{Tekst/Eng/theoryEng}
+
+\subsection{Pinhole camera model}
+    \input{Tekst/Eng/pinholeEng}
+
+    \subsubsection{Extrinsic parameters}
+        \input{Tekst/Eng/extrinsincsEng}
+    
+    \subsubsection{Intrinsic parameters}
+        \input{Tekst/Eng/intrinsicsEng}
+
+\subsection{Projective transformation}
+    \input{Tekst/Eng/projtransEng}
+
+\subsection{Distortion}
+    \input{Tekst/Eng/distortionEng}
+
+\subsection{Camera calibration}
+    \input{Tekst/Eng/calibTeoEng}
+
+
+\section{Code}
+    \input{Tekst/Eng/kodEng}
+    
+    \subsection{Generate ChArUco}
+        \input{Tekst/Eng/genChArUcoEng}
+
+    \subsection{Camera calibration}
+        \input{Tekst/Eng/camcalibEng}
+
+    \subsection{Undistortion}
+        \input{Tekst/Eng/undistortionEng}
+
+\section{Meshroom}
+    \input{Tekst/Eng/meshroomEng}
+    
+\end{document}
