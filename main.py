@@ -222,7 +222,7 @@ if __name__ == "__main__":
         start = time.time()
         methodB(cwd, calibBoard, objBoard)
         stop = time.time()
-        print(f'Done in {start-stop:.0f} seconds')
+        print(f'Done in {stop-start:.0f} seconds')
         viewModel(cwd)
 
     elif method == '3':
@@ -232,7 +232,7 @@ if __name__ == "__main__":
         start = time.time()
         methodC(cwd, board)
         stop = time.time()
-        print(f'Done in {start-stop:.0f} seconds')
+        print(f'Done in {stop-start:.0f} seconds')
         viewModel(cwd)
 
     elif method == '4':
@@ -240,7 +240,7 @@ if __name__ == "__main__":
         start = time.time()
         methodD(cwd)
         stop = time.time()
-        print(f'Done in {start-stop:.0f} seconds')
+        print(f'Done in {stop-start:.0f} seconds')
         viewModel(cwd)
     elif method == '5':
         print('Utils')
