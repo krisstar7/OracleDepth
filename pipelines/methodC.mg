@@ -45,7 +45,7 @@
                 "outputMeshFileType": "obj",
                 "colorMapping": {
                     "enable": true,
-                    "colorMappingFileType": "exr"
+                    "colorMappingFileType": "jpg"
                 },
                 "bumpMapping": {
                     "enable": true,

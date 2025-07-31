@@ -7,6 +7,7 @@ import OracleDepth as od
 import random, string
 import json
 import vedo
+import time
 
 _defaultRefParams = cv.aruco.RefineParameters(minRepDistance = 10.,
                                            errorCorrectionRate = 3.,
@@ -33,9 +34,9 @@ def methodB(cwd, calibBoard, objBoard):
     metadata, sensorWidth, sensorHeight, serialNumber, width, height = od.readInitFile(cwd)
     
     mtx, dist = od.calibrate(calibImagesLoc, calibBoard, _defaultCharucoParams, _defaultRefParams)
-    pnpindex, rvecs, tvecs = od.getPos(objImagesLoc, mtx, dist, objBoard)
+    pnpindex, rvecs, tvecs, errors = od.getPos(objImagesLoc, mtx, dist, objBoard)
 
-    od.genSfMDataMethodB(cwd, mtx, dist, metadata, sensorWidth, sensorHeight, serialNumber, width, height, pnpindex, rvecs, tvecs)
+    od.genSfMDataMethodB(cwd, mtx, dist, metadata, sensorWidth, sensorHeight, serialNumber, width, height, pnpindex, rvecs, tvecs, errors)
 
 
     cmd = [
@@ -83,7 +84,7 @@ def methodD(cwd):
         "--input", "objImgs",
         "--output", "results",
         "--pipeline", "pipelines\\methodD.mg",
-        "--cache", f"{cwd}\\MeshroomCache"
+        "--cache", f"{cwd}\\MeshroomCache",
     ]
 
     subprocess.run(cmd, cwd=cwd)
@@ -189,8 +190,8 @@ def inputCalibBoardData():
     return board
 
 def viewModel(cwd):
-    mesh = vedo.load(f'{cwd}\\results\\texturedMesh.obj')
-    mesh.texture(f'{cwd}\\results\\texture_1001.jpg')
+    mesh = vedo.load(f'{cwd}\\results\\texturedMesh.obj', f'{cwd}\\results\\texturedMesh.mtl')
+    # mesh.texture(f'{cwd}\\results\\texture_1001.jpg')
     vedo.show(mesh, axes=1)
 
 if __name__ == "__main__":
@@ -218,21 +219,45 @@ if __name__ == "__main__":
         checkCalibImgs(cwd)
         calibBoard = inputCalibBoardData()
         objBoard = inputObjBoardData(calibBoard)
+        start = time.time()
         methodB(cwd, calibBoard, objBoard)
+        stop = time.time()
+        print(f'Done in {start-stop:.0f} seconds')
         viewModel(cwd)
 
     elif method == '3':
         print('Method C')
         checkCalibImgs(cwd)
         board = inputCalibBoardData()
+        start = time.time()
         methodC(cwd, board)
+        stop = time.time()
+        print(f'Done in {start-stop:.0f} seconds')
         viewModel(cwd)
 
     elif method == '4':
         print('Method D')
+        start = time.time()
         methodD(cwd)
+        stop = time.time()
+        print(f'Done in {start-stop:.0f} seconds')
         viewModel(cwd)
+    elif method == '5':
+        print('Utils')
+        print("""Choose utility
+          1. View last 3D model
+          2. Generate ChAruCo board(WIP)
+        """)
 
+        util = input("Utility number: ")
+
+        if util == '1':
+            viewModel(cwd)
+        # elif util == '2':
+        #     genCharuco()
+        else:
+            raise ValueError('Unknown input')
+        
     else:
         raise ValueError('Unknown input')
     

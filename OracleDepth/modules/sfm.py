@@ -86,13 +86,21 @@ def _convMtx(mtx):
 
     return focalLength, principalPoint
 
-def genPoses(pnpindex, rvecs, tvecs):
+def genPoses(pnpindex, rvecs, tvecs, errors):
     poses = []
-
+    
     for i in range(len(pnpindex)):
         p = pnpindex[i]
         r = rvecs[i]
         t = tvecs[i]
+        error = errors[i]
+        
+        maxReprojError = 1
+        if not (error > 0 and error < maxReprojError):
+            continue
+
+        if r is None or t is None:
+            continue
 
         C = -cv.Rodrigues(r)[0].T @ t
         C = C.flatten()
@@ -133,10 +141,10 @@ def _convRot(r):
 
     return rot_mtx.T.flatten()
 
-def genSfMDataMethodB(cwd, mtx, dist, metadata, sensorWidth, sensorHeight, serialNumber, width, height, pnpindex, rvecs, tvecs):
+def genSfMDataMethodB(cwd, mtx, dist, metadata, sensorWidth, sensorHeight, serialNumber, width, height, pnpindex, rvecs, tvecs, errors):
     views = genViews(cwd, metadata)
     intrinsics = genIntrinsics(mtx, dist, sensorWidth, sensorHeight, serialNumber, width, height)
-    poses = genPoses(pnpindex, rvecs, tvecs)
+    poses = genPoses(pnpindex, rvecs, tvecs, errors)
 
     data = {
         'version': ['1', '2', '6'],

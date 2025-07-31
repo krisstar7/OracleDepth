@@ -155,7 +155,11 @@
             "inputs": {
                 "input": "{Meshing_1.output}",
                 "imagesFolder": "{DepthMap_1.imagesFolder}",
-                "inputMesh": "{MeshFiltering_1.outputMesh}"
+                "inputMesh": "{MeshFiltering_1.outputMesh}",
+                "colorMapping": {
+                    "enable": true,
+                    "colorMappingFileType": "jpg"
+                }
             }
         }
     }

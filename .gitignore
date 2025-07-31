@@ -1,5 +1,6 @@
 Meshroom/
-calibImgs/
-objImgs/
+MeshroomCache/
 *.pyc
-results/
+results/*
+calibImgs/*
+objImgs/*
